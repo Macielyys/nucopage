@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuvo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --verde: #006600;
+      --amarelo: #FFD700;
+      --preto: #000000;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;
+      color: white;
+    }
+
+    .menu {
+      background-color: #031B2B;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .menu-container {
+      display: flex;
+      align-items: center;
+      padding: 25px 24px;
+    }
+
+    .menu-links {
+      margin-left: auto; /* empurra para o canto direito */
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-weight: bold;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin-right: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 650;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #2b7f2b;
+    }
+
+    .icone-carrinho i {
+      font-size: 20px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* DESTAQUE */
+    .destaque {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 250px;
+      background-color: #00BFFF; /* Alterado para a cor do primeiro site */
+      border-bottom-left-radius: 80px;
+      border-top-right-radius: 80px;
+      flex-wrap: wrap;
+    }
+
+    .texto-destaque {
+      max-width: 500px;
+    }
+
+    .texto-destaque h2 {
+      font-size: 22px;
+      color: #FF3CAC;
+    }
+
+    .texto-destaque h1 {
+      font-size: 44px;
+      margin: 10px 0;
+      font-weight: 700;
+      color: white;
+    }
+
+    .texto-destaque p {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #f5f5f5;
+    }
+
+    .botoes-destaque {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .botao-principal,
+    .botao-secundario {
+      padding: 11px;
+      border-radius: 30px;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      width: 38%;
+      margin-left: 30%;
+      font-weight: 650;
+    }
+
+    .botao-principal {
+      background-color: #FF3CAC;
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 60, 172, 0.4);
+    }
+
+    .botao-principal:hover {
+      background-color: #e7389e;
+    }
+
+    .botao-secundario {
+      background-color: white;
+      color: #031B2B;
+    }
+
+    .botao-secundario:hover {
+      background-color: #e6e6e6;
+    }
+
+    .imagem-destaque img {
+      height: 500px; /* Ajustado para o tamanho do segundo site */
+      max-width: 100%;
+    }
+
+    .espaco {
+      height: 50px;
+      background-color: rgb(0, 0, 0);
+      border-top-left-radius: -37px;
+    }
+
+    section {
+      padding: 5rem 2rem;
+      transition: all 0.5s ease;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--verde);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--amarelo);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: #f5f5f5;
+      padding: 1.5rem;
+      border-left: 5px solid var(--amarelo);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+      color: #000;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    video {
+      border-radius: 10px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    footer {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    #sobre, #reviews, #eventos, #team {
+      background-color: white;
+      color: black;
+    }
+
+    #sobre h2,
+    #reviews h2,
+    #eventos h2,
+    #team h2 {
+      color: var(--verde);
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    #redes-sociais {
+      background-color: #ffffff;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #redes-sociais h2 {
+      color: var(--verde);
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+    }
+
+    .redes-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .rede {
+      color: white;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+    }
+
+    .rede i {
+      font-size: 20px;
+    }
+
+    /* Cores específicas por rede */
+    .instagram {
+      background-color: #E1306C;
+    }
+    .instagram:hover {
+      background-color: #c6265b;
+    }
+
+    .youtube {
+      background-color: #FF0000;
+    }
+    .youtube:hover {
+      background-color: #cc0000;
+    }
+
+    .tiktok {
+      background-color: #000000;
+    }
+    .tiktok:hover {
+      background-color: #1a1a1a;
+    }
+
+    .facebook {
+      background-color: #1877F2;
+    }
+    .facebook:hover {
+      background-color: #125dc1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MENU -->
+  <header class="menu">
+    <div class="menu-container">
+      <div class="logo">
+        <img src="imagens/" alt="Logo NUvo" />
+      </div>
+      <nav class="menu-links">
+        <ul>
+          <li><a href="#sobre">SOBRE</a></li>
+          <li><a href="#reviews">CLIENTES</a></li>
+          <li><a href="#eventos">EVENTOS</a></li>
+          <li><a href="#team">TIME</a></li>
+          <li><a href="#redes-sociais">CONTATOS</a></li>
+        </ul>
+        <div class="icone-carrinho">
+          <i class="fas fa-shopping-cart"></i>
+        </div </nav>
+    </div>
+  </header>
+
+  <!-- DESTAQUE -->
+  <section class="destaque">
+    <div class="texto-destaque">
+      <h2>NOVA COLEÇÃO</h2>
+      <h1>Iron Shark Suplementos</h1>
+      <p>Os mais potentes do mar direto pra sua força!</p>
+      <div class="botoes-destaque">
+        <a href="#eventos" class="botao-principal">Comprar Agora</a>
+        <a href="#reviews" class="botao-secundario">Ver Mais</a>
+      </div>
+    </div>
+    <div class="imagem-destaque">
+      <img src="ChatGPT Image 12 de abr. de 2025, 23_02_32.png" alt="" />
+    </div>
+  </section>
+
+  <div class="espaco"></div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <div class="container">
+      <div class="card">
+        <p>Nós acreditamos que a verdadeira transformação financeira começa com conhecimento e confiança. Nossa missão é simples: ajudar você a alcançar seus objetivos financeiros da forma mais eficiente possível. A Nuvo Capital, junto com seus parceiros, possui mais de 170 anos de experiência no mercado financeiro e soma um total superior a 88 bilhões de dólares em ativos sob gestão.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <h2>Clientes</h2>
+    <div class="container">
+      <div class="card">
+        <p>“Profissionais incríveis! Me senti seguro com cada orientação que recebi. A Nuvo mudou minha vida financeira.”</p>
+        <small>- João M.</small>
+      </div>
+      <div class="card">
+        <video controls>
+          <source src="video-cliente1.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section id="eventos">
+    <h2>Eventos</h2>
+    <div class="container">
+      <div class="card">
+        <h3>Workshop Finanças para Todos</h3>
+        <p>Data: 25/05/2025 | Local: Belo Horizonte</p>
+        <p>Aprenda a investir com segurança e autonomia. Presencial e gratuito.</p>
+      </div>
+      <div class="card">
+        <h3>Nuvo Summit</h3>
+        <p>Data: 15/08/2025 | Online</p>
+        <p>Participe do maior evento de educação financeira da Nuvo Capital. 100% digital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIME -->
+  <section id="team">
+    <h2>Nosso Time</h2>
+    <div class="container">
+      <div class="card">
+        <h3>Camila Souza</h3>
+        <p>CEO & Fundadora — Especialista em estratégia financeira com mais de 15 anos no mercado.</p>
+      </div>
+      <div class="card">
+        <h3>Lucas Moreira</h3>
+        <p>Diretor de Operações — Responsável por estruturar investimentos de impacto e crescimento sustentável.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES SOCIAIS -->
+  <section id="redes-sociais">
+    <h2>Nos Acompanhe</h2>
+    <div class="redes-container">
+      <a href="https://www.instagram.com/" target="_blank" class="rede instagram">
+        <i class="fab fa-instagram"></i>
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" class="rede youtube">
+        <i class="fab fa-youtube"></i>
+        YouTube
+      </a>
+      <a href="https://www.tiktok.com/" target="_blank" class="rede tiktok">
+        <i class="fab fa-tiktok"></i>
+        TikTok
+      </a>
+      <a href="https://www.facebook.com/" target="_blank" class="rede facebook">
+        <i class="fab fa-facebook"></i>
+        Facebook
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Iron Shark. Todos os direitos reservados.</p>
+    <p>Desenvolvido por Geração Tech</p>
+  </footer>
+</body>
+</html>
